@@ -49,7 +49,7 @@ def initialize_delivery_providers():
 def home():
     return render_template('home.html')
 
-app.route('/health')
+@app.route('/health')
 def health_check():
     return 'OK', 200  # Respuesta mínima y rápida
 
