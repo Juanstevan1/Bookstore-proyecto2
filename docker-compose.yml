@@ -1,35 +1,20 @@
 version: '3.8'
 
 services:
-  db:
-    image: mysql:8
-    restart: always
-    environment:
-      MYSQL_DATABASE: bookstore
-      MYSQL_USER: bookstore_user
-      MYSQL_PASSWORD: bookstore_pass
-      MYSQL_ROOT_PASSWORD: root_pass
-    ports:
-      - "3306:3306"
-    volumes:
-      - db_data:/var/lib/mysql
-    networks:
-      - bookstore_net
-
   flaskapp:
     build: .
     restart: always
     environment:
-      - FLASK_ENV=development
+      - FLASK_ENV=development  # Recomendado para entornos fuera de desarrollo
+      - SQLALCHEMY_DATABASE_URI=mysql+pymysql://bookstore_user:bookstore_pass@bookstore-db.cr6oemqg45kn.us-east-1.rds.amazonaws.com:3306/bookstore
     ports:
       - "5000:5000"
-    depends_on:
-      - db
+    volumes:
+      - /mnt/efs/bookstore/static:/app/static
+    # Elimina la dependencia del servicio "db"
     networks:
       - bookstore_net
 
-volumes:
-  db_data:
-
+# Elimina el servicio "db" y el volumen "db_data"
 networks:
   bookstore_net:
