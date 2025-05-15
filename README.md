@@ -134,3 +134,4 @@ pythonSQLALCHEMY_DATABASE_URI = 'mysql+pymysql://bookstore_user:bookstore_pass@b
 2. Asegúrate de tener las credenciales correctas para la base de datos.
 3. En entornos de producción, deberías cambiar la clave secreta en config.py y deshabilitar el modo de depuración.
 4. La aplicación está diseñada para ser ejecutada en un entorno controlado y seguro.
+5. La implementación del Objetivo 3 se entregó con un avance del 85%, se logró implementar la gran mayoría de las características propuestas para este objetivo. Sin embargo, una porción menor quedó pendiente de ser finalizada.
